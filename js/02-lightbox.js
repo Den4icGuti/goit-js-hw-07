@@ -6,9 +6,6 @@ const marCupGallery = galleryMarcup();
 
 galleryRef.insertAdjacentHTML('beforeend', marCupGallery);
 
-
-
-
 function galleryMarcup() { 
   return galleryItems.map(({ preview, original, description }) => {
     return `
@@ -18,8 +15,6 @@ function galleryMarcup() {
     `
    }).join('')
 };
-
-
 
 let img = ''
 

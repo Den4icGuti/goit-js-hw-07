@@ -12,7 +12,6 @@ galleryRef.addEventListener('click', createOpenModaImg);
 galleryRef.addEventListener('keydown', onCloseModal);
 
 function createGalleryMarcup() { 
-  
   return  galleryItems.map(({ preview, original, description }) => 
    `<div class="gallery__item">
     <a class="gallery__link" href="${original}">
@@ -35,10 +34,8 @@ function createOpenModaImg(evt) {
   img = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
 `);
-  
   img.show()
-}
-
+};
 
 function onCloseModal(evt) { 
   if (evt.code === "Escape") { 
