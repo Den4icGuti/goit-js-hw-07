@@ -18,7 +18,8 @@ function galleryMarcup() {
 
 let img = ''
 
-let gallery = new SimpleLightbox('.gallery a', {captionsData:'alt',captionDelay:250});
+let gallery = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+
 gallery.on('show.simplelightbox', function (e) {
 	img = `<img = "${e.target.dataset.source}">`
 });

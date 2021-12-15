@@ -2,13 +2,10 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const galleryRef = document.querySelector('.gallery');
-
 const galleryMarcup = createGalleryMarcup();
 
 galleryRef.insertAdjacentHTML('beforeend', galleryMarcup);
-
 galleryRef.addEventListener('click', createOpenModaImg);
-
 galleryRef.addEventListener('keydown', onCloseModal);
 
 function createGalleryMarcup() { 
