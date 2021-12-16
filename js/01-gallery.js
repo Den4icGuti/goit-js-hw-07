@@ -28,14 +28,20 @@ let img = ""
 
 function createOpenModaImg(evt) { 
   evt.preventDefault();
+
+  const currentImg = evt.target.dataset.source;
+  if (!currentImg) { 
+    return;
+  }
   img = basicLightbox.create(`
-    <img src="${evt.target.dataset.source}" width="800" height="600">
+    <img src="${currentImg}" width="800" height="600">
 `);
   img.show()
 };
 
-function onCloseModal(evt) { 
-  if (evt.code === "Escape") { 
+function onCloseModal(evt) {
+  const onClickEscape = evt.target.dataset.source.code;
+  if (onClickEscape === "Escape") { 
     img.close()
   }
 };
