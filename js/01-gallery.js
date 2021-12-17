@@ -5,8 +5,9 @@ const galleryRef = document.querySelector('.gallery');
 const galleryMarcup = createGalleryMarcup();
 
 galleryRef.insertAdjacentHTML('beforeend', galleryMarcup);
-galleryRef.addEventListener('click', createOpenModaImg);
-galleryRef.addEventListener('keydown', onCloseModal);
+galleryRef.addEventListener('click', onOpenModalImg);
+// galleryRef.addEventListener('keydown', onKeyPress);
+
 
 function createGalleryMarcup() { 
   return  galleryItems.map(({ preview, original, description }) => 
@@ -26,10 +27,12 @@ function createGalleryMarcup() {
 
 let img = ""
 
-function createOpenModaImg(evt) { 
+function onOpenModalImg(evt) { 
   evt.preventDefault();
-
+  
+  window.addEventListener('keydown',onEscKeyPress)
   const currentImg = evt.target.dataset.source;
+
   if (!currentImg) { 
     return;
   }
@@ -39,12 +42,18 @@ function createOpenModaImg(evt) {
   img.show()
 };
 
-function onCloseModal(evt) {
-  const onClickEscape = evt.target.dataset.source.code;
-  if (onClickEscape === "Escape") { 
-    img.close()
-  }
+function onCloseModal() { 
+  window.removeEventListener('keydown',onEscKeyPress)
 };
 
-
+function onEscKeyPress(evt) { 
+  const ESC_KEY_CODE = 'Escape';
+  
+  if (evt.code === ESC_KEY_CODE) {
+    onCloseModal()
+  }
+  img.close()
+ 
+  console.log(evt)
+}
  
