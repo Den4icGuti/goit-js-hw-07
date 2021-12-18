@@ -6,8 +6,6 @@ const galleryMarcup = createGalleryMarcup();
 
 galleryRef.insertAdjacentHTML('beforeend', galleryMarcup);
 galleryRef.addEventListener('click', onOpenModalImg);
-// galleryRef.addEventListener('keydown', onKeyPress);
-
 
 function createGalleryMarcup() { 
   return  galleryItems.map(({ preview, original, description }) => 
@@ -39,12 +37,15 @@ function onOpenModalImg(evt) {
   img = basicLightbox.create(`
     <img src="${currentImg}" width="800" height="600">
 `);
+  console.log(img)
   img.show()
 };
 
 function onCloseModal() { 
-  window.removeEventListener('keydown',onEscKeyPress)
+  window.removeEventListener('keydown', onEscKeyPress);
+  window.removeEventListener('click',onOpenModalImg)
 };
+
 
 function onEscKeyPress(evt) { 
   const ESC_KEY_CODE = 'Escape';
@@ -52,8 +53,8 @@ function onEscKeyPress(evt) {
   if (evt.code === ESC_KEY_CODE) {
     onCloseModal()
   }
+   
   img.close()
- 
-  console.log(evt)
+ console.log(evt)
 }
  
